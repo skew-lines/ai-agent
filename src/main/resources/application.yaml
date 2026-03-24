@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: ai-agent
+  profiles:
+    active: local
+  datasource:
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  ai:
+    dashscope:
+      api-key: ${spring.ai.dashscope.api-key}
+      chat:
+        options:
+          model: ${spring.ai.dashscope.chat.options.model}
+    mcp:
+      client:
+        stdio:
+          servers-configuration: ${spring.ai.mcp.client.stdio.servers-configuration}
+    vectorstore:
+      pgvector:
+        index-type: ${spring.ai.vectorstore.pgvector.index-type}
+        dimensions: ${spring.ai.vectorstore.pgvector.dimensions}
+        distance-type: ${spring.ai.vectorstore.pgvector.distance-type}
+        max-document-batch-size: ${spring.ai.vectorstore.pgvector.max-document-batch-size}
+server:
+  port: ${server.port}
+  servlet:
+    context-path: ${server.servlet.context-path}
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: default
+      paths-to-match: /**
+      packages-to-scan: com.yl.controller
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+search-api:
+  api-key: ${SEARCH_API_KEY}
+app:
+  file:
+    save-dir: ${app.file.save-dir}
+  web-search:
+    base-url: ${app.web-search.base-url}
+    engine: ${app.web-search.engine}
+
+logging:
+  level:
+    org.springframework.ai: DEBUG

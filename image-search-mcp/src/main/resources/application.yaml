@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: image-search-mcp
+  profiles:
+    active: local
+
+server:
+  port: ${server.port}
+
+image-search:
+  api-key: ${image-search.api-key}
+  api-url: ${image-search.api-url}
