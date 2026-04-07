@@ -1,7 +1,7 @@
 package com.yl.controller;
 
 import com.yl.agent.OpenManus;
-import com.yl.app.LoveApp;
+import com.yl.app.CodingApp;
 import com.yl.persistence.AgentPersistenceService;
 import jakarta.annotation.Resource;
 import org.springframework.ai.chat.model.ChatModel;
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class AiController {
 
     @Resource
-    private LoveApp loveApp;
+    private CodingApp codingApp;
 
     @Resource
     private ToolCallback[] allTools;
@@ -37,22 +37,22 @@ public class AiController {
 
     @GetMapping("/love_app/chat/sync")
     public String doChatWithLoveAppSync(String message, String chatId) {
-        return loveApp.doChat(message, chatId);
+        return codingApp.doChat(message, chatId);
     }
 
     @GetMapping("/love_app/chat/rag")
     public String doChatWithLoveAppRag(String message, String chatId) {
-        return loveApp.doChatWithRag(message, chatId);
+        return codingApp.doChatWithRag(message, chatId);
     }
 
     @GetMapping(value = "/love_app/chat/sse", produces = "text/event-stream;charset=UTF-8")
     public Flux<String> doChatWithLoveAppSSE(String message, String chatId) {
-        return loveApp.doChatByStream(message, chatId);
+        return codingApp.doChatByStream(message, chatId);
     }
 
     @GetMapping(value = "/love_app/chat/server_sent_event", produces = "text/event-stream;charset=UTF-8")
     public Flux<ServerSentEvent<String>> doChatWithLoveAppServerSentEvent(String message, String chatId) {
-        return loveApp.doChatByStream(message, chatId)
+        return codingApp.doChatByStream(message, chatId)
                 .map(chunk -> ServerSentEvent.<String>builder()
                         .data(chunk)
                         .build());
@@ -61,7 +61,7 @@ public class AiController {
     @GetMapping(value = "/love_app/chat/sse_emitter", produces = "text/event-stream;charset=UTF-8")
     public SseEmitter doChatWithLoveAppServerSseEmitter(String message, String chatId) {
         SseEmitter sseEmitter = new SseEmitter(180000L);
-        loveApp.doChatByStream(message, chatId)
+        codingApp.doChatByStream(message, chatId)
                 .subscribe(chunk -> {
                     try {
                         sseEmitter.send(SseEmitter.event().data(chunk));

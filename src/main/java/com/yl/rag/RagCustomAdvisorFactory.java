@@ -11,7 +11,7 @@ import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder;
 /**
  * 创建自定义的 RAG 检索增强顾问的工厂
  */
-public class LoveAppRagCustomAdvisorFactory {
+public class RagCustomAdvisorFactory {
 
     /**
      * 创建自定义的 RAG 检索增强顾问
@@ -34,7 +34,7 @@ public class LoveAppRagCustomAdvisorFactory {
                 .build();
         return RetrievalAugmentationAdvisor.builder()
                 .documentRetriever(documentRetriever)
-                .queryAugmenter(LoveAppContextualQueryAugmenterFactory.createInstance())
+                .queryAugmenter(ContextualQueryAugmenterFactory.createInstance())
                 .build();
     }
 }
