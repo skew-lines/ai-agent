@@ -9,14 +9,13 @@ import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
 import org.springframework.ai.rag.retrieval.search.DocumentRetriever;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 自定义基于阿里云知识库服务的 RAG 增强顾问
  */
 //@Configuration
 @Slf4j
-public class LoveAppRagCloudAdvisorConfig {
+public class RagCloudAdvisorConfig {
 
     @Value("${spring.ai.dashscope.api-key}")
     private String dashScopeApiKey;

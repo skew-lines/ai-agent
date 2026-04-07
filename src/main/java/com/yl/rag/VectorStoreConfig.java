@@ -7,7 +7,6 @@ import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
@@ -16,16 +15,16 @@ import java.util.List;
  */
 /*@Configuration*/
 @Slf4j
-public class LoveAppVectorStoreConfig {
+public class VectorStoreConfig {
 
     @Resource
-    private LoveAppDocumentLoader loveAppDocumentLoader;
+    private DocumentLoader loveAppDocumentLoader;
 
     @Resource
-    private MyTokenTextSplitter myTokenTextSplitter;
+    private TokenTextSplitter TokenTextSplitter;
 
     @Resource
-    private MyKeywordEnricher myKeywordEnricher;
+    private KeywordEnricher KeywordEnricher;
 
     @Bean
     VectorStore loveAppVectorStore(EmbeddingModel dashscopeEmbeddingModel) {
@@ -34,7 +33,7 @@ public class LoveAppVectorStoreConfig {
 //        List<Document> splitDocuments = myTokenTextSplitter.splitCustomized(documentList);
         List<Document> documentsToStore = documentList;
         try {
-            documentsToStore = myKeywordEnricher.enrichDocuments(documentList);
+            documentsToStore = KeywordEnricher.enrichDocuments(documentList);
         } catch (Exception e) {
             log.warn("Keyword enrichment failed during vector store initialization, fallback to raw documents", e);
         }
