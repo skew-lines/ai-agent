@@ -2,7 +2,7 @@ package com.yl.app;
 
 import com.yl.advisor.MyLoggerAdvisor;
 import com.yl.chatmemory.PgChatMemory;
-import com.yl.rag.QueryRewriter;
+import com.yl.rag.rewrite.QueryRewriter;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;

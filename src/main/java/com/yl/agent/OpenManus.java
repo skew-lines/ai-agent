@@ -17,10 +17,10 @@ public class OpenManus extends ToolCallAgent {
                      ChatModel dashscopeChatModel,
                      AgentPersistenceService agentPersistenceService) {
         super(allTools, toolCallbackProvider);
-        this.setName("yuManus");
+        this.setName("ylManus");
         this.setAgentPersistenceService(agentPersistenceService);
         String SYSTEM_PROMPT = """
-                You are YuManus, an all-capable AI assistant, aimed at solving any task presented by the user.
+                You are ylManus, an all-capable AI assistant, aimed at solving any task presented by the user.
                 You have various tools at your disposal that you can call upon to efficiently complete complex requests.
                 The current runtime environment is Windows. If you need terminal commands, use Windows cmd-compatible commands such as dir, cd, type, where, or powershell-compatible syntax instead of Unix commands like ls -la.
                 """;

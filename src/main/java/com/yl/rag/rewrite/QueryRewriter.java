@@ -1,4 +1,4 @@
-package com.yl.rag;
+package com.yl.rag.rewrite;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
@@ -6,8 +6,6 @@ import org.springframework.ai.rag.Query;
 import org.springframework.ai.rag.preretrieval.query.transformation.QueryTransformer;
 import org.springframework.ai.rag.preretrieval.query.transformation.RewriteQueryTransformer;
 import org.springframework.stereotype.Component;
-
-import java.util.Random;
 
 /**
  * 查询重写器，调用LLM生成增强的Query
